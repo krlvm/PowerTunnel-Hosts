@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group 'io.github.krlvm.powertunnel.plugins'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    fatImplementation
+    compile.extendsFrom(fatImplementation)
+}
+
+dependencies {
+    implementation('io.github.krlvm.powertunnel:sdk') {
+        version {
+            branch = 'master'
+        }
+    }
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
