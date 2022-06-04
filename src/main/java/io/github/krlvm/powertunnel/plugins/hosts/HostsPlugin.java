@@ -94,13 +94,13 @@ public class HostsPlugin extends PowerTunnelPlugin {
 
             final InetAddress address;
             try {
-                address = InetAddress.getByName(arr[arr.length-1]);
+                address = InetAddress.getByName(arr[0]);
             } catch (UnknownHostException exception) {
                 LOGGER.warn("Invalid IP Address in line: '{}'", line);
                 continue;
             }
 
-            for (int i = 0; i < arr.length - 1; i++) {
+            for (int i = 1; i < arr.length; i++) {
                 hosts.put(arr[i].toLowerCase(), address);
             }
         }
