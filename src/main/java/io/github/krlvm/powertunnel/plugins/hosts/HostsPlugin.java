@@ -87,20 +87,22 @@ public class HostsPlugin extends PowerTunnelPlugin {
             if (line.isEmpty() || line.startsWith("#")) continue;
 
             String[] arr = line.split("\\s+");
-            if (arr.length != 2) {
+            if (arr.length < 2) {
                 LOGGER.warn("Malformed line: '{}'", line);
                 continue;
             }
 
             final InetAddress address;
             try {
-                address = InetAddress.getByName(arr[1]);
+                address = InetAddress.getByName(arr[arr.length-1]);
             } catch (UnknownHostException exception) {
-                LOGGER.warn("Invalid IP Address for '{}': '{}'", arr[0], arr[1]);
+                LOGGER.warn("Invalid IP Address in line: '{}'", line);
                 continue;
             }
 
-            hosts.put(arr[0].toLowerCase(), address);
+            for (int i = 0; i < arr.length - 1; i++) {
+                hosts.put(arr[i].toLowerCase(), address);
+            }
         }
 
         if (hosts.isEmpty()) {
