@@ -1,0 +1,28 @@
+[
+  {
+    "key": "mirror",
+    "type": "string"
+  },
+  {
+    "key": "mirror_interval",
+    "type": "select",
+    "items": [
+      {
+        "key": "interval_1"
+      },
+      {
+        "key": "interval_2"
+      },
+      {
+        "key": "interval_3"
+      },
+      {
+        "key": "interval_4"
+      },
+      {
+        "key": "interval_5"
+      }
+    ],
+    "defaultValue": "interval_2"
+  }
+]
